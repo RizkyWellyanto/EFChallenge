@@ -1,6 +1,8 @@
 # EverfaveChallenge
 Hello World with Famo.us Framework. 
+
 Made using the starter kit of Famo.us framework.
+
 By: Muhammad Rizky Wellyanto
 
 Steps for running the program:
