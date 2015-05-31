@@ -15,5 +15,6 @@ B> Screenshot:
    Available on 'screenshot' folder
 
 C> My opinion for experiencing Famo.us Framework:
+   
    This is the first time I used famo.us framework. And I have to say that the way things work are very interesting; The way famo.us structured hierarchically as node “scene” trees makes animations and transformations easy. It’s also fairly easy to understand, I spent about a weekend to learn the basics, and I pretty much got the fundamentals. Another thing I realized was that famo.us and Angular plays along pretty well, this combination would prove to be awesome in the future. I found famo.us’ imperative way of coding more expressive and much easier to understand than CSS’s declarative code. I think one of the coolest part of famo.us framework is its’ tendency to be agnostic of output layer, making it flexible to implement with browsers, native mobile dev, etc. My hope for the future for famo.us would be to be comparably faster than mobile native framework. Since everything tend to be mobile and web-based, and famo.us is doing well as a web framework, I would say it would be awesome if famo.us and angular could replace/integrate with native framework and doesn’t lose any performance.
    
