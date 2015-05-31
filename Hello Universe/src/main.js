@@ -10,6 +10,7 @@ var Easing = famous.transitions.Easing;
 var EventHandler = famous.core.EventHandler;
 var Transitionable = famous.transitions.Transitionable;
 var RenderController = famous.views.RenderController;
+var Timer = famous.utilities.Timer;
 
 var mainContext = Engine.createContext();
 var initialTime = Date.now();
@@ -47,9 +48,8 @@ var beatModifier = new Modifier({
 mainRenderController.hide(mainParticle);
 
 // supporting particles
-function createRandomCell() {
+var createRandomCell = function()  {
   var renderController = new RenderController();
-
   var positionState = new Transitionable([Math.random(),Math.random()]);
   var scaleState = new Transitionable(0.5);
 
@@ -78,7 +78,6 @@ function createRandomCell() {
   var scaleModifier = new Modifier({
     transform:function(){
       var scale = scaleState.get();
-
       return Transform.scale(scale,scale,scale);
     },
     opacity:function(){
@@ -90,7 +89,7 @@ function createRandomCell() {
     origin: [0.5, 0.5]
   });
 
-  var randomAlignModifier = new Modifier({
+  var alignModifier = new Modifier({
     align: function(){
       return positionState.get();
     }
@@ -99,11 +98,11 @@ function createRandomCell() {
   renderController.show(particleSurface);
 
   mainContext
-    .add(randomAlignModifier)
+    .add(alignModifier)
     .add(centerOriginModifier)
     .add(scaleModifier)
     .add(renderController);
-}
+};
 
 // Main flow
 mainContext
@@ -111,11 +110,9 @@ mainContext
   .add(beatModifier)
   .add(mainRenderController);
 
-var cellSpawnAnimation = window.setInterval(function(){
-  createRandomCell();
-}, 12.5);
+Engine.on('prerender', createRandomCell);
 
 Engine.on('click', function(){
-  window.clearInterval(cellSpawnAnimation);
+  Timer.clear(createRandomCell);
   mainRenderController.show(mainParticle);
 });
